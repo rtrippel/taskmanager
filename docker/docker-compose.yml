@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    container_name: tm-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=taskmanager
+    ports:
+      - '5488:5432'
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+      - .:/var/elib/postgresql/data
